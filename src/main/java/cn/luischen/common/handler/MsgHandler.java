@@ -15,6 +15,7 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutNewsMessage;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
@@ -29,6 +30,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MsgHandler extends AbstractHandler {
 
+    @Autowired
     private ChatGptService chatGptService;
 
     @Override

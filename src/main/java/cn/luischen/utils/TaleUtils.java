@@ -5,6 +5,7 @@ import cn.luischen.controller.admin.AttAchController;
 import cn.luischen.exception.BusinessException;
 import cn.luischen.model.UserDomain;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
 import org.commonmark.node.Node;
@@ -164,7 +165,7 @@ public class TaleUtils {
             if (cookie != null && cookie.getValue() != null) {
                 try {
                     String uid = Tools.deAes(cookie.getValue(), WebConst.AES_SALT);
-                    return StringUtils.isNotBlank(uid) && Tools.isNumber(uid) ? Integer.valueOf(uid) : null;
+                    return StringUtils.isNotBlank(uid) && NumberUtils.isNumber(uid) ? Integer.valueOf(uid) : null;
                 } catch (Exception e) {
                 }
             }
