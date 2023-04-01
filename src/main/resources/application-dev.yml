@@ -106,3 +106,8 @@ wx:
       http-proxy-port:
       http-proxy-username:
       http-proxy-password:
+
+
+chatGpt:
+  apikey: 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
+  timeout: 30
