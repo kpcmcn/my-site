@@ -12,7 +12,7 @@
     </sql>
 
     <!-- 新增日志记录 -->
-    <insert id="addLog" parameterType="cn.luischen.model.LogDomain">
+    <insert id="addLog" parameterType="cn.luischen.common.model.LogDomain">
         INSERT INTO
         <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -33,7 +33,7 @@
     </delete>
 
     <!-- 查找日志 -->
-    <select id="getLogs" resultType="cn.luischen.model.LogDomain">
+    <select id="getLogs" resultType="cn.luischen.common.model.LogDomain">
         SELECT
         <include refid="BASE_COLUMN"/>
         FROM

@@ -1,6 +1,6 @@
 package cn.luischen.service.option;
 
-import cn.luischen.model.OptionsDomain;
+import cn.luischen.common.model.OptionsDomain;
 
 import java.util.List;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package cn.luischen.service.log;
 
-import cn.luischen.model.LogDomain;
+import cn.luischen.common.model.LogDomain;
 import com.github.pagehelper.PageInfo;
 
 /**

@@ -2,7 +2,6 @@ package cn.luischen.api;
 
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.utils.TaleUtils;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -14,9 +13,7 @@ import com.qiniu.util.Auth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

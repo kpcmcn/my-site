@@ -3,7 +3,7 @@ package cn.luischen.service.option.impl;
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.dao.OptionDao;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.model.OptionsDomain;
+import cn.luischen.common.model.OptionsDomain;
 import cn.luischen.service.option.OptionService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

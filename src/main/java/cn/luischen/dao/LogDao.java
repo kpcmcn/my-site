@@ -1,6 +1,6 @@
 package cn.luischen.dao;
 
-import cn.luischen.model.LogDomain;
+import cn.luischen.common.model.LogDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

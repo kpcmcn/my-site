@@ -1,8 +1,8 @@
 package cn.luischen.service.meta;
 
-import cn.luischen.dto.MetaDto;
-import cn.luischen.dto.cond.MetaCond;
-import cn.luischen.model.MetaDomain;
+import cn.luischen.common.dto.MetaDto;
+import cn.luischen.common.dto.cond.MetaCond;
+import cn.luischen.common.model.MetaDomain;
 
 import java.util.List;
 

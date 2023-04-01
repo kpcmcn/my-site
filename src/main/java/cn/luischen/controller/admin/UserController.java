@@ -1,9 +1,7 @@
 package cn.luischen.controller.admin;
 
-import cn.luischen.model.UserDomain;
 import cn.luischen.service.user.UserService;
-import cn.luischen.utils.APIResponse;
-import com.github.pagehelper.PageHelper;
+import cn.luischen.common.utils.APIResponse;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

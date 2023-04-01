@@ -16,7 +16,7 @@
     </sql>
 
     <!-- 添加项目信息 -->
-    <insert id="addMeta" parameterType="cn.luischen.model.MetaDomain" useGeneratedKeys="true" keyProperty="mid">
+    <insert id="addMeta" parameterType="cn.luischen.common.model.MetaDomain" useGeneratedKeys="true" keyProperty="mid">
         INSERT INTO
         <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -36,7 +36,7 @@
     </delete>
 
     <!-- 更新项目 -->
-    <update id="updateMeta" parameterType="cn.luischen.model.MetaDomain">
+    <update id="updateMeta" parameterType="cn.luischen.common.model.MetaDomain">
         UPDATE
         <include refid="BASE_TABLE"/>
         <set>
@@ -63,7 +63,7 @@
     </update>
 
     <!-- 根据主键编号获取项目 -->
-    <select id="getMetaById" resultType="cn.luischen.model.MetaDomain">
+    <select id="getMetaById" resultType="cn.luischen.common.model.MetaDomain">
         SELECT
         <include refid="BASE_COLUMN"/>
         FROM
@@ -72,8 +72,8 @@
     </select>
 
     <!-- 根据条件获取项目 -->
-    <select id="getMetasByCond" resultType="cn.luischen.model.MetaDomain"
-                parameterType="cn.luischen.dto.cond.MetaCond">
+    <select id="getMetasByCond" resultType="cn.luischen.common.model.MetaDomain"
+                parameterType="cn.luischen.common.dto.cond.MetaCond">
         SELECT
         <include refid="BASE_COLUMN"/>
         FROM
@@ -96,7 +96,7 @@
         WHERE type = #{type, jdbcType=VARCHAR}
     </select>
 
-    <resultMap id="BaseResultMap" type="cn.luischen.model.MetaDomain">
+    <resultMap id="BaseResultMap" type="cn.luischen.common.model.MetaDomain">
         <id column="mid" jdbcType="INTEGER" property="mid" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="slug" jdbcType="VARCHAR" property="slug" />
@@ -106,7 +106,7 @@
         <result column="parent" jdbcType="INTEGER" property="parent" />
     </resultMap>
 
-    <resultMap id="MetaDto" type="cn.luischen.dto.MetaDto" extends="BaseResultMap">
+    <resultMap id="MetaDto" type="cn.luischen.common.dto.MetaDto" extends="BaseResultMap">
         <result column="count" property="count" jdbcType="INTEGER"/>
     </resultMap>
 

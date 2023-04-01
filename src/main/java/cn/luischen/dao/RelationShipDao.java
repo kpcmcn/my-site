@@ -1,6 +1,6 @@
 package cn.luischen.dao;
 
-import cn.luischen.model.RelationShipDomain;
+import cn.luischen.common.model.RelationShipDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package cn.luischen.service.attach;
 
-import cn.luischen.dto.AttAchDto;
-import cn.luischen.model.AttAchDomain;
+import cn.luischen.common.dto.AttAchDto;
+import cn.luischen.common.model.AttAchDomain;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

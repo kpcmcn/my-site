@@ -2,9 +2,9 @@ package cn.luischen.service.attach.impl;
 
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.dao.AttAchDao;
-import cn.luischen.dto.AttAchDto;
+import cn.luischen.common.dto.AttAchDto;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.model.AttAchDomain;
+import cn.luischen.common.model.AttAchDomain;
 import cn.luischen.service.attach.AttAchService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

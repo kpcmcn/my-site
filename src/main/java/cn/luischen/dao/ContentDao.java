@@ -1,8 +1,8 @@
 package cn.luischen.dao;
 
-import cn.luischen.dto.ArchiveDto;
-import cn.luischen.dto.cond.ContentCond;
-import cn.luischen.model.ContentDomain;
+import cn.luischen.common.dto.ArchiveDto;
+import cn.luischen.common.dto.cond.ContentCond;
+import cn.luischen.common.model.ContentDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

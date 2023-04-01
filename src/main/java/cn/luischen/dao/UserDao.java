@@ -1,6 +1,6 @@
 package cn.luischen.dao;
 
-import cn.luischen.model.UserDomain;
+import cn.luischen.common.model.UserDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,12 +1,13 @@
 package cn.luischen.interceptor;
 
+import cn.luischen.common.utils.*;
 import cn.luischen.constant.Types;
 import cn.luischen.constant.WebConst;
-import cn.luischen.model.OptionsDomain;
-import cn.luischen.model.UserDomain;
+import cn.luischen.common.model.OptionsDomain;
+import cn.luischen.common.model.UserDomain;
 import cn.luischen.service.option.OptionService;
 import cn.luischen.service.user.UserService;
-import cn.luischen.utils.*;
+import cn.luischen.common.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

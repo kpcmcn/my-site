@@ -1,7 +1,7 @@
 package cn.luischen.service.content;
 
-import cn.luischen.dto.cond.ContentCond;
-import cn.luischen.model.ContentDomain;
+import cn.luischen.common.dto.cond.ContentCond;
+import cn.luischen.common.model.ContentDomain;
 import com.github.pagehelper.PageInfo;
 
 /**

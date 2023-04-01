@@ -2,12 +2,12 @@ package cn.luischen.controller.admin;
 
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.controller.BaseController;
-import cn.luischen.dto.cond.CommentCond;
+import cn.luischen.common.dto.cond.CommentCond;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.model.CommentDomain;
-import cn.luischen.model.UserDomain;
+import cn.luischen.common.model.CommentDomain;
+import cn.luischen.common.model.UserDomain;
 import cn.luischen.service.comment.CommentService;
-import cn.luischen.utils.APIResponse;
+import cn.luischen.common.utils.APIResponse;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

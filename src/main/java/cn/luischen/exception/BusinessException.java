@@ -1,6 +1,6 @@
 package cn.luischen.exception;
 
-import cn.luischen.utils.APIResponse;
+import cn.luischen.common.utils.APIResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

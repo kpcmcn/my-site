@@ -2,11 +2,10 @@ package cn.luischen.service.user.impl;
 
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.dao.UserDao;
-import cn.luischen.dto.cond.UserCond;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.model.UserDomain;
+import cn.luischen.common.model.UserDomain;
 import cn.luischen.service.user.UserService;
-import cn.luischen.utils.TaleUtils;
+import cn.luischen.common.utils.TaleUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package cn.luischen.dao;
 
-import cn.luischen.model.OptionsDomain;
+import cn.luischen.common.model.OptionsDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

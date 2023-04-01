@@ -1,8 +1,7 @@
 package cn.luischen.service.user;
 
-import cn.luischen.model.UserDomain;
+import cn.luischen.common.model.UserDomain;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
 /**
  * Created by winterchen on 2018/4/20.

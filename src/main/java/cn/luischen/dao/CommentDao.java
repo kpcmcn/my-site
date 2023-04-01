@@ -1,7 +1,7 @@
 package cn.luischen.dao;
 
-import cn.luischen.dto.cond.CommentCond;
-import cn.luischen.model.CommentDomain;
+import cn.luischen.common.dto.cond.CommentCond;
+import cn.luischen.common.model.CommentDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

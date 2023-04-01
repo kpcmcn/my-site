@@ -3,7 +3,7 @@ package cn.luischen.service.log.impl;
 import cn.luischen.constant.ErrorConstant;
 import cn.luischen.dao.LogDao;
 import cn.luischen.exception.BusinessException;
-import cn.luischen.model.LogDomain;
+import cn.luischen.common.model.LogDomain;
 import cn.luischen.service.log.LogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

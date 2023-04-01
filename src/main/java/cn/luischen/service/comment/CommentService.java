@@ -1,9 +1,8 @@
 package cn.luischen.service.comment;
 
-import cn.luischen.dto.cond.CommentCond;
-import cn.luischen.model.CommentDomain;
+import cn.luischen.common.dto.cond.CommentCond;
+import cn.luischen.common.model.CommentDomain;
 import com.github.pagehelper.PageInfo;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
