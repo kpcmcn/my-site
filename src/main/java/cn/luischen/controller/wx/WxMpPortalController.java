@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 微信调用入口
+ *
  * @author andy
  */
 @RestController
@@ -48,6 +49,8 @@ public class WxMpPortalController {
         if (!this.wxService.checkSignature(timestamp, nonce, signature)) {
             throw new IllegalArgumentException("非法请求，可能属于伪造的请求！");
         }
+
+        long start = System.currentTimeMillis();
         String out = null;
         if (encType == null) {
             // 明文传输的消息
@@ -68,7 +71,8 @@ public class WxMpPortalController {
             }
             out = outMessage.toEncryptedXml(this.getWxService().getWxMpConfigStorage());
         }
-        log.debug("\n组装回复信息：{}", out);
+        log.info("\n组装回复信息：{}", out);
+        log.info("处理接受到的微信消息, 处理时间为:{}", System.currentTimeMillis() - start);
         return out;
     }
 

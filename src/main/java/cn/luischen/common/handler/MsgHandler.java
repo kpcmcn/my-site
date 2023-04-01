@@ -3,6 +3,7 @@ package cn.luischen.common.handler;
 import cn.luischen.common.builder.TextBuilder;
 import cn.luischen.service.ChatGptService;
 import cn.luischen.service.wx.WeiXinService;
+import com.google.common.cache.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
@@ -16,11 +17,16 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutNewsMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author andy
@@ -30,8 +36,37 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MsgHandler extends AbstractHandler {
 
+    private static final String wx_msg_handel_prefix_ = "wx_msg_handel_prefix_";
+
     @Autowired
     private ChatGptService chatGptService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    private static final LoadingCache<Long, String> gpt_result_msg_cache = createGuavaCache();
+
+    public static LoadingCache<Long, String> createGuavaCache() {
+        return CacheBuilder.newBuilder()
+                // 设置并发级别为5，并发级别是指可以同时写缓存的线程数
+                .concurrencyLevel(5)
+                // 设置写缓存后10秒钟后过期
+                .expireAfterWrite(20, TimeUnit.SECONDS)
+                // 设置缓存容器的初始容量为8
+                .initialCapacity(100)
+                // 设置缓存最大容量为10，超过10之后就会按照LRU最近虽少使用算法来移除缓存项
+                .maximumSize(1000)
+                // 设置缓存的移除通知
+                .removalListener(notification -> log.info("本地缓存gpt消息移除, {} was removed, cause is {}", notification.getKey(), notification.getCause()))
+                // 指定CacheLoader，在缓存不存在时通过CacheLoader的实现自动加载缓存
+                .build(new CacheLoader<Long, String>() {
+                    @Override
+                    public String load(Long key) throws Exception {
+                        log.error("缓存中没有数据, key:{}", key);
+                        return "暂无消息！";
+                    }
+                });
+    }
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -63,9 +98,38 @@ public class MsgHandler extends AbstractHandler {
                 return sendLuckyMessage();*/
             default:
                 // 默认走chatGPT回复
-                String content = chatGptService.doChat(wxMessage.getContent());
+                String content = defaultHandel(wxMessage);
                 return new TextBuilder().build(content, wxMessage, weixinService);
         }
+    }
+
+    private String defaultHandel(WxMpXmlMessage wxMessage) {
+        // value为null -> 第一次处理消息直接调用gpt
+        // value为false -> 已经处理过，但是gpt还没有返回
+        // value为true -> 已经处理过，gpt也处理完缓存中有数据
+        String key = wx_msg_handel_prefix_ + wxMessage.getMsgId();
+        String value = (String) redisTemplate.opsForValue().get(key);
+        logger.info("request chatGpt redis-key:{} key-value:{}", key, value);
+        if (Objects.isNull(value)) {
+            redisTemplate.opsForValue().set(key, "false", Duration.ofSeconds(20));
+            String gptResMsg = chatGptService.doChat(wxMessage.getContent());
+            // 存到缓存
+            gpt_result_msg_cache.put(wxMessage.getMsgId(), gptResMsg);
+            redisTemplate.opsForValue().set(key, "true");
+            return gptResMsg;
+        } else if (StringUtils.equals(value, "false")) {
+            // 说明是重试的消息，上次还没处理完，等待
+            log.info("重试的消息，上次GPT还没回复，等待不做处理！");
+        } else {
+            // 说明是重试的消息，从缓存中获取，获取不到
+            try {
+                return gpt_result_msg_cache.get(wxMessage.getMsgId());
+            } catch (ExecutionException e) {
+                log.error("从缓存中获取数据异常", e);
+            }
+        }
+        log.error("不会吧！！！太阳从西边出来了！");
+        return null;
     }
 
 //    private void sendLuckyMessage(LuckyUser user, WxMpKefuService wxMpKefuService, UserService userService) throws Exception {
