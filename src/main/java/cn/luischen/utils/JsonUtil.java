@@ -1,8 +1,10 @@
 package cn.luischen.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.SneakyThrows;
 
 /**
  * @author andy
@@ -18,5 +20,16 @@ public class JsonUtil {
 
     public static ObjectMapper getJSON() {
         return JSON;
+    }
+
+    public static String of(Object o) {
+        if (o instanceof String){
+            return (String) o;
+        }
+        try {
+            return JSON.writeValueAsString(o);
+        } catch (JsonProcessingException e) {
+            return null;
+        }
     }
 }

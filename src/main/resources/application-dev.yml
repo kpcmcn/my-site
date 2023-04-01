@@ -10,9 +10,9 @@ spring:
         druid:
           #监控统计拦截的filters
           filters: stat
-          driver-class-name: com.mysql.jdbc.Driver
+          driver-class-name: com.mysql.cj.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://182.92.241.132:3306/my_site?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=false
+          url: jdbc:mysql://127.0.0.1:3306/my_site?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=false
           username: root
           password: mac123
           #配置初始化大小/最小/最大
@@ -109,5 +109,5 @@ wx:
 
 
 chatGpt:
-  apikey: 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
+  apikey: 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
   timeout: 30
