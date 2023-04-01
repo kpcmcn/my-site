@@ -1,10 +1,12 @@
 package cn.luischen.model;
 
+import java.io.Serializable;
+
 /**
  * 网站配置项
  * Created by winterchen on 2018/4/28.
  */
-public class OptionsDomain {
+public class OptionsDomain implements Serializable {
 
     /** 名称 */
     private String name;

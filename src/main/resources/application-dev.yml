@@ -12,7 +12,7 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://127.0.0.1:3306/lu_tale?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          url: jdbc:mysql://182.92.241.132:3306/my_site?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&verifyServerCertificate=false&useSSL=false
           username: root
           password: mac123
           #配置初始化大小/最小/最大
@@ -32,6 +32,13 @@ spring:
           #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
           pool-prepared-statements: false
           max-pool-prepared-statement-per-connection-size: 20
+
+    #redis配置
+    redis:
+      host: 182.92.241.132
+      port: 6379
+      password: 123456
+
     thymeleaf:
             prefix: classpath:/templates/
             check-template-location: true
@@ -44,8 +51,8 @@ spring:
       proxy-target-class: true
     servlet:
           multipart:
-            max-file-size: 10Mb
-            max-request-size: 100Mb
+            max-file-size: 10MB
+            max-request-size: 100MB
 
 
 mybatis:
@@ -74,3 +81,28 @@ qiniu:
   bucket: ""
   cdn:
     url: ""
+
+#微信相关
+wx:
+  # 公众号配置(必填)
+  mp:
+    app-id: wxd96d03276b987fdb
+    secret: 8ed81ed13cfa180f2a08d56dc8ef1759
+    token: kpcmcn
+    aes-key: xx
+
+    # 存储配置redis(可选)
+    config-storage:
+      type: RedisTemplate
+      key-prefix: wx
+      redis:
+        host: 182.92.241.132
+        port: 6379
+        password: 123456
+
+      # http客户端配置
+      http-client-type: HttpClient
+      http-proxy-host:
+      http-proxy-port:
+      http-proxy-username:
+      http-proxy-password:
